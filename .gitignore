@@ -6,7 +6,7 @@ venv/
 __pycache__/
 
 # Ignorer les fichiers de données volumineux
-data/*.csv
+data
 
 # Ignorer les modèles sauvegardés
 *.pkl
