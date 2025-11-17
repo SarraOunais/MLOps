@@ -1,8 +1,8 @@
-  name: ML Pipeline
+name: ML Pipeline
 
 on:
   push:
-    branches: [ master ]  # ou main si ta branche principale s'appelle main
+    branches: [ master ]   # change en main si besoin
   pull_request:
     branches: [ master ]
 
@@ -11,14 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ------------------------------
+      # Récupérer le code du repo
+      # ------------------------------
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # ------------------------------
+      # Installer Python
+      # ------------------------------
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.11
 
+      # ------------------------------
+      # Installer les dépendances
+      # ------------------------------
       - name: Install dependencies
         run: |
           python -m venv venv
@@ -26,24 +35,34 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
+      # ------------------------------
+      # Étape 1 : Préparation des données
+      # ------------------------------
       - name: Prepare data
         run: |
           source venv/bin/activate
           python main.py --prepare
 
+      # ------------------------------
+      # Étape 2 : Entraînement du modèle
+      # ------------------------------
       - name: Train model
         run: |
           source venv/bin/activate
           python main.py --train
 
+      # ------------------------------
+      # Étape 3 : Évaluation du modèle
+      # ------------------------------
       - name: Evaluate model
         run: |
           source venv/bin/activate
           python main.py --evaluate
 
+      # ------------------------------
+      # Étape 4 : Prédictions sur les données de test
+      # ------------------------------
       - name: Predict
         run: |
           source venv/bin/activate
           python main.py --predict
-
-          
