@@ -1,0 +1,15 @@
+# Ignorer l'environnement virtuel
+venv/
+
+# Ignorer les fichiers temporaires Python
+*.pyc
+__pycache__/
+
+# Ignorer les fichiers de données volumineux
+data/*.csv
+
+# Ignorer les modèles sauvegardés
+*.pkl
+
+#Ignorer le makefile
+Makefile
