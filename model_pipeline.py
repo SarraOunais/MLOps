@@ -1,13 +1,14 @@
+import os
+import pickle
+import warnings
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
-import warnings
-import pickle
-import os
 
 warnings.filterwarnings("ignore")
 
@@ -147,7 +148,6 @@ def preprocess_data(df, is_train=True):
     return df_processed
 
 
-
 def prepare_data(train_path, test_path):
     """
     Charge et prétraite les données d'entraînement et de test, puis crée les splits pour le ML.
@@ -220,6 +220,9 @@ def train_model(X_train, y_train):
     return model
 
 
+from sklearn.metrics import accuracy_score, confusion_matrix
+import numpy as np
+
 def evaluate_model(model, X_test, y_test):
     """
     Évalue les performances du modèle.
@@ -236,14 +239,25 @@ def evaluate_model(model, X_test, y_test):
     Returns
     -------
     dict
-        Contient 'accuracy', 'predictions' et 'actual'.
+        Contient 'accuracy', 'confusion_matrix', 'predictions' et 'actual'.
     """
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
+    cm = confusion_matrix(y_test, y_pred)
+
     print(f"Accuracy du modèle: {accuracy:.4f}")
     print(f"Prédictions correctes: {np.sum(y_test == y_pred)}")
     print(f"Prédictions incorrectes: {np.sum(y_test != y_pred)}")
-    return {"accuracy": accuracy, "predictions": y_pred, "actual": y_test}
+    print(f"Confusion Matrix:\n{cm}")
+
+    return {
+        "accuracy": accuracy,
+        "confusion_matrix": cm,
+        "predictions": y_pred,
+        "actual": y_test
+    }
+
+
 
 
 def predict(model, X_data):
@@ -338,3 +352,22 @@ def create_submission(predictions, test_ids, file_name="submission.csv"):
     submission.to_csv(file_name, index=False)
     print(f"Fichier de soumission créé : {file_name}")
     return submission
+
+def retrain_model(X_train, y_train, var_smoothing=1e-9):
+    """
+    Réentraîne un modèle Naive Bayes avec des hyperparamètres personnalisés.
+
+    Args:
+        X_train (pd.DataFrame): Features d'entraînement
+        y_train (pd.Series): Labels d'entraînement
+        var_smoothing (float): Paramètre de lissage de GaussianNB (stabilité numérique)
+
+    Returns:
+        GaussianNB: Modèle Naive Bayes réentraîné
+    """
+    model = GaussianNB(var_smoothing=var_smoothing)
+    model.fit(X_train, y_train)
+
+    print(f"Modèle Naive Bayes réentraîné avec succès (var_smoothing={var_smoothing})")
+
+    return model

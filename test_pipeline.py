@@ -1,12 +1,5 @@
-from model_pipeline import (
-    prepare_data,
-    train_model,
-    evaluate_model,
-    predict,
-    save_model,
-    load_model,
-    create_submission,
-)
+from model_pipeline import (create_submission, evaluate_model, load_model,
+                            predict, prepare_data, save_model, train_model)
 
 # Chemins vers vos fichiers CSV
 train_path = "data/train.csv"

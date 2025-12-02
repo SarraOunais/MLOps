@@ -5,14 +5,8 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Importer toutes les fonctions et variables globales depuis model_pipeline.py
-from model_pipeline import (
-    prepare_data,
-    train_model,
-    evaluate_model,
-    predict,
-    save_model,
-    load_model,
-)
+from model_pipeline import (evaluate_model, load_model, predict, prepare_data,
+                            save_model, train_model)
 
 
 def main():
