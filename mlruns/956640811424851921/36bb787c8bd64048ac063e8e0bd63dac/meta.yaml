@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921/36bb787c8bd64048ac063e8e0bd63dac/artifacts
+end_time: 1764873632427
+entry_point_name: ''
+experiment_id: '956640811424851921'
+lifecycle_stage: active
+run_id: 36bb787c8bd64048ac063e8e0bd63dac
+run_name: beautiful-moose-589
+run_uuid: 36bb787c8bd64048ac063e8e0bd63dac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764873629587
+status: 3
+tags: []
+user_id: sarra

@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921/d324f6ca9dbb4c969d05188071864ff4/artifacts
+end_time: 1764688710136
+entry_point_name: ''
+experiment_id: '956640811424851921'
+lifecycle_stage: active
+run_id: d324f6ca9dbb4c969d05188071864ff4
+run_name: popular-lamb-922
+run_uuid: d324f6ca9dbb4c969d05188071864ff4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764688705951
+status: 3
+tags: []
+user_id: sarra

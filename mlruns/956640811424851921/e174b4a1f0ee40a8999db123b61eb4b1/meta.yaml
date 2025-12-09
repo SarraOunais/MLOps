@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921/e174b4a1f0ee40a8999db123b61eb4b1/artifacts
+end_time: 1764873317660
+entry_point_name: ''
+experiment_id: '956640811424851921'
+lifecycle_stage: active
+run_id: e174b4a1f0ee40a8999db123b61eb4b1
+run_name: stately-ray-961
+run_uuid: e174b4a1f0ee40a8999db123b61eb4b1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764873314654
+status: 3
+tags: []
+user_id: sarra

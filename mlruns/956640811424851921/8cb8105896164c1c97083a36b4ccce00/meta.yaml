@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921/8cb8105896164c1c97083a36b4ccce00/artifacts
+end_time: 1764689648484
+entry_point_name: ''
+experiment_id: '956640811424851921'
+lifecycle_stage: active
+run_id: 8cb8105896164c1c97083a36b4ccce00
+run_name: merciful-shrew-927
+run_uuid: 8cb8105896164c1c97083a36b4ccce00
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764689643855
+status: 3
+tags: []
+user_id: sarra

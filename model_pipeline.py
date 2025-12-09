@@ -9,6 +9,8 @@ import seaborn as sns
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
+import mlflow
+import mlflow.sklearn
 
 warnings.filterwarnings("ignore")
 
@@ -216,6 +218,11 @@ def train_model(X_train, y_train):
     """
     model = GaussianNB()
     model.fit(X_train, y_train)
+
+    # Logging MLflow (en supposant que le run est déjà actif)
+    mlflow.sklearn.log_model(model, "naive_bayes_model")
+    mlflow.log_param("model_type", "GaussianNB")
+    mlflow.log_param("n_features", X_train.shape[1])
     print("Modèle Naive Bayes entraîné avec succès")
     return model
 
@@ -249,6 +256,12 @@ def evaluate_model(model, X_test, y_test):
     print(f"Prédictions correctes: {np.sum(y_test == y_pred)}")
     print(f"Prédictions incorrectes: {np.sum(y_test != y_pred)}")
     print(f"Confusion Matrix:\n{cm}")
+
+    # --- Logs MLflow (run déjà actif dans main.py) ---
+    mlflow.log_metric("accuracy", accuracy)
+
+    # Log de la matrice de confusion (en texte)
+    mlflow.log_text(str(cm), "confusion_matrix.txt")
 
     return {
         "accuracy": accuracy,
@@ -370,4 +383,7 @@ def retrain_model(X_train, y_train, var_smoothing=1e-9):
 
     print(f"Modèle Naive Bayes réentraîné avec succès (var_smoothing={var_smoothing})")
 
+    # --- Logs MLflow ---
+    mlflow.log_param("var_smoothing", var_smoothing)
+    mlflow.sklearn.log_model(model, "retrained_naive_bayes_model")
     return model

@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921/32f7925cbecc42ff98c4d3b69db34276/artifacts
+end_time: 1764687692225
+entry_point_name: ''
+experiment_id: '956640811424851921'
+lifecycle_stage: active
+run_id: 32f7925cbecc42ff98c4d3b69db34276
+run_name: intrigued-pig-84
+run_uuid: 32f7925cbecc42ff98c4d3b69db34276
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764687692151
+status: 4
+tags: []
+user_id: sarra

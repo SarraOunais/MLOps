@@ -1,59 +1,71 @@
-# main.py
+# main.py 
 
 import warnings
+import mlflow
+import mlflow.sklearn
 
 warnings.filterwarnings("ignore")
 
-# Importer toutes les fonctions et variables globales depuis model_pipeline.py
-from model_pipeline import (evaluate_model, load_model, predict, prepare_data,
-                            save_model, train_model)
-
+# Importer les fonctions du pipeline
+from model_pipeline import (
+    evaluate_model, load_model, predict, prepare_data,
+    save_model, train_model
+)
 
 def main():
+    mlflow.set_tracking_uri("sqlite:///mlflow.db")
+
     # Chemins des fichiers de données
     train_path = "data/train.csv"
     test_path = "data/test.csv"
 
-    print("=== Pipeline de Prédiction de Prêts - Modèle Naive Bayes ===\n")
+    # Définir l'expérience MLflow
+    mlflow.set_experiment("Loan_Prediction_NaiveBayes")
 
-    # Étape 1: Préparation des données
-    print("1. Préparation des données...")
-    data = prepare_data(train_path, test_path)
-    print(f"Shape X_train: {data['X_train'].shape}")
-    print(f"Shape X_test: {data['X_test'].shape}")
-    print(f"Shape X_final_test: {data['X_final_test'].shape}")
-    print(f"Features utilisées: {list(data['X_train'].columns)}\n")
+    # Début du run MLflow
+    with mlflow.start_run():
 
-    # Étape 2: Entraînement du modèle
-    print("2. Entraînement du modèle Naive Bayes...")
-    model = train_model(data["X_train"], data["y_train"])
-    print()
+        print("=== Pipeline de Prédiction de Prêts - Modèle Naive Bayes ===\n")
 
-    # Étape 3: Évaluation du modèle
-    print("3. Évaluation du modèle...")
-    results = evaluate_model(model, data["X_test"], data["y_test"])
-    print()
+        # Étape 1 — Préparation des données
+        print("1. Préparation des données...")
+        data = prepare_data(train_path, test_path)
+        print(f"Shape X_train: {data['X_train'].shape}")
+        print(f"Shape X_test: {data['X_test'].shape}")
+        print(f"Shape X_final_test: {data['X_final_test'].shape}")
+        print(f"Features utilisées: {list(data['X_train'].columns)}\n")
 
-    # Étape 4: Prédictions sur les données de test finales
-    print("4. Prédictions sur les données de test...")
-    final_predictions = predict(model, data["X_final_test"])
-    print(f"Nombre de prédictions: {len(final_predictions)}")
-    print(f"Prêts approuvés: {sum(final_predictions == 1)}")
-    print(f"Prêts refusés: {sum(final_predictions == 0)}\n")
+        # Étape 2 — Entraînement
+        print("2. Entraînement du modèle Naive Bayes...")
+        model = train_model(data["X_train"], data["y_train"])
+        print()
 
-    # Étape 5: Sauvegarde du modèle
-    print("5. Sauvegarde du modèle...")
-    save_model(model, "naive_bayes_loan_model.pkl")
-    print()
+        # Étape 3 — Évaluation
+        print("3. Évaluation du modèle...")
+        results = evaluate_model(model, data["X_test"], data["y_test"])
+        # Ici pas besoin de re-log accuracy, evaluate_model le fait déjà
+        print()
 
-    # Étape 6: Chargement du modèle et vérification
-    print("6. Test de chargement du modèle...")
-    loaded_model = load_model("naive_bayes_loan_model.pkl")
-    test_predictions = predict(loaded_model, data["X_test"].head())
-    print(f"Prédictions de test avec modèle chargé: {test_predictions}\n")
+        # Étape 4 — Prédictions finales
+        print("4. Prédictions sur les données de test...")
+        final_predictions = predict(model, data["X_final_test"])
+        print(f"Nombre de prédictions: {len(final_predictions)}")
+        print(f"Prêts approuvés: {sum(final_predictions == 1)}")
+        print(f"Prêts refusés: {sum(final_predictions == 0)}\n")
 
-    print("=== Pipeline terminé avec succès ===")
+        # Étape 5 — Sauvegarde
+        print("5. Sauvegarde du modèle...")
+        save_model(model, "naive_bayes_loan_model.pkl")
+        mlflow.sklearn.log_model(model, "naive_bayes_model")
+        print()
 
+        # Étape 6 — Test de chargement
+        print("6. Test de chargement du modèle...")
+        loaded_model = load_model("naive_bayes_loan_model.pkl")
+        test_predictions = predict(loaded_model, data["X_test"].head())
+        print(f"Prédictions avec modèle chargé: {test_predictions}\n")
+
+        print("=== Pipeline terminé avec succès ===")
 
 if __name__ == "__main__":
     main()

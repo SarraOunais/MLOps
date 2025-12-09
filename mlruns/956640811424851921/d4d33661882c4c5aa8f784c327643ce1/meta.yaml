@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921/d4d33661882c4c5aa8f784c327643ce1/artifacts
+end_time: 1764873373237
+entry_point_name: ''
+experiment_id: '956640811424851921'
+lifecycle_stage: active
+run_id: d4d33661882c4c5aa8f784c327643ce1
+run_name: illustrious-lark-438
+run_uuid: d4d33661882c4c5aa8f784c327643ce1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764873370468
+status: 3
+tags: []
+user_id: sarra

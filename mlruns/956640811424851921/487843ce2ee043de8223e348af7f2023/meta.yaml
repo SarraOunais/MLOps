@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921/487843ce2ee043de8223e348af7f2023/artifacts
+end_time: 1764873364004
+entry_point_name: ''
+experiment_id: '956640811424851921'
+lifecycle_stage: active
+run_id: 487843ce2ee043de8223e348af7f2023
+run_name: skittish-ray-376
+run_uuid: 487843ce2ee043de8223e348af7f2023
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764873361132
+status: 3
+tags: []
+user_id: sarra

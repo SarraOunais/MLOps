@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921/f8b51d27c53c4e60bdae46da232bcf82/artifacts
+end_time: 1764873359108
+entry_point_name: ''
+experiment_id: '956640811424851921'
+lifecycle_stage: active
+run_id: f8b51d27c53c4e60bdae46da232bcf82
+run_name: unequaled-mouse-988
+run_uuid: f8b51d27c53c4e60bdae46da232bcf82
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764873355969
+status: 3
+tags: []
+user_id: sarra

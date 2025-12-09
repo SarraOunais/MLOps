@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921/fa3172db1bde498cbcaaa1a5091d01cf/artifacts
+end_time: 1764687744529
+entry_point_name: ''
+experiment_id: '956640811424851921'
+lifecycle_stage: active
+run_id: fa3172db1bde498cbcaaa1a5091d01cf
+run_name: thundering-ape-689
+run_uuid: fa3172db1bde498cbcaaa1a5091d01cf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764687744465
+status: 4
+tags: []
+user_id: sarra

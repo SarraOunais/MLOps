@@ -1,0 +1,6 @@
+artifact_location: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921
+creation_time: 1764687691963
+experiment_id: '956640811424851921'
+last_update_time: 1764687691963
+lifecycle_stage: active
+name: Loan_Prediction_NaiveBayes

@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sarra/ounais-sarra-4DS8-ml_project/mlruns/956640811424851921/6abccdc751dd48429a43f45847397b11/artifacts
+end_time: 1764688747737
+entry_point_name: ''
+experiment_id: '956640811424851921'
+lifecycle_stage: active
+run_id: 6abccdc751dd48429a43f45847397b11
+run_name: marvelous-cod-873
+run_uuid: 6abccdc751dd48429a43f45847397b11
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764688743383
+status: 3
+tags: []
+user_id: sarra
